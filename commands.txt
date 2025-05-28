@@ -1,0 +1,13 @@
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt install -y nodejs git
+
+
+# Ubuntu
+sudo apt update
+sudo apt install -y postgresql postgresql-contrib
+sudo -u postgres psql
+
+
+CREATE DATABASE demo;
+CREATE USER dev WITH ENCRYPTED PASSWORD 2612;
+GRANT ALL PRIVILEGES ON DATABASE demo TO dev;
