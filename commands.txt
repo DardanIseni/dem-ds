@@ -2,25 +2,6 @@ curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt install -y nodejs git
 
 
-# Ubuntu
-sudo apt update
-sudo apt install -y postgresql postgresql-contrib
-sudo -u postgres psql
-
-
-CREATE DATABASE deploydemo;
-CREATE USER test WITH ENCRYPTED PASSWORD "test";
-GRANT ALL PRIVILEGES ON DATABASE deploydemo TO test;
-\c deploydemo
-
-CREATE TABLE users (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(100) NOT NULL,
-  email VARCHAR(100) UNIQUE NOT NULL
-);
-\q
-
-
 git clone https://github.com/DardanIseni/dem-ds.git
 cd dem-ds
 npm install

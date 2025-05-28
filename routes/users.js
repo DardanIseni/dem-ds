@@ -1,26 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const pool = require('../db');
+const data = require('../db');
 
-// GET all users
+// GET users
 router.get('/', async (req, res) => {
     try {
-        const result = await pool.query('SELECT * FROM users');
-        res.json(result.rows);
+        res.json(data);
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
 });
 
-// POST new user
-router.post('/', async (req, res) => {
-    const { name, email } = req.body;
-    try {
-        await pool.query('INSERT INTO users (name, email) VALUES ($1, $2)', [name, email]);
-        res.status(201).json({ message: 'User added' });
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
 
 module.exports = router;
