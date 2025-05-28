@@ -8,6 +8,20 @@ sudo apt install -y postgresql postgresql-contrib
 sudo -u postgres psql
 
 
-CREATE DATABASE demo;
-CREATE USER dev WITH ENCRYPTED PASSWORD 2612;
-GRANT ALL PRIVILEGES ON DATABASE demo TO dev;
+CREATE DATABASE deploydemo;
+CREATE USER test WITH ENCRYPTED PASSWORD "test";
+GRANT ALL PRIVILEGES ON DATABASE deploydemo TO test;
+\c deploydemo
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(100) UNIQUE NOT NULL
+);
+\q
+
+
+git clone https://github.com/DardanIseni/dem-ds.git
+cd dem-ds
+npm install
+
